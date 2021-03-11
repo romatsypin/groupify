@@ -2,12 +2,12 @@ import pandas as pd
 import numpy as np
 
 # Grouping function
-def grouping(group, min_memb, max_memb):
+def grouping(group, min_memb, max_memb, alpha = 0):
     distance = [0]
     for i in range(group.shape[0] - 1):
         distance.append(abs(group.iloc[i + 1]["rating"] - group.iloc[i]["rating"]))
     group["distance"] = distance
-    median_dist = group.median()["distance"]
+    median_dist = group.median()["distance"] + alpha
     student = 0
     group_num = 0
     groups_dict = {}
@@ -22,23 +22,36 @@ def grouping(group, min_memb, max_memb):
             break
         else:
             break
-        while groups_dict[key_name].shape[0] < min_memb:
-            groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
-            if student + 1 != group.shape[0]:
-                student = student + 1
-            else:
-                break
-            if groups_dict[key_name].shape[0] == min_memb:
-                while groups_dict[key_name].shape[0] < max_memb:
-                    if group.iloc[student]["distance"] < median_dist:
-                        groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
-                        if student + 1 != group.shape[0]:
-                            student = student + 1
+        if min_memb != 1:
+            while groups_dict[key_name].shape[0] < min_memb:
+                groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
+                if student + 1 != group.shape[0]:
+                    student = student + 1
+                else:
+                    break
+                if groups_dict[key_name].shape[0] == min_memb:
+                    while groups_dict[key_name].shape[0] < max_memb:
+                        if group.iloc[student]["distance"] < median_dist:
+                            groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
+                            if student + 1 != group.shape[0]:
+                                student = student + 1
+                            else:
+                                break
                         else:
                             break
+        elif min_memb == 1:
+            while groups_dict[key_name].shape[0] < max_memb:
+                if group.iloc[student]["distance"] < median_dist:
+                    groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
+                    if student + 1 != group.shape[0]:
+                        student = student + 1
                     else:
                         break
+                else:
+                    break
         if student + 1 == group.shape[0] and group.index.values[-1] == groups_dict[key_name].index.values[-1]:
             break
         group_num = group_num + 1
+    if min_memb == max_memb and group.shape[0] % min_memb != 0:
+        print("Warning! Your group size selection may leave some members in smaller groups than selected")
     return groups_dict
