@@ -1,6 +1,6 @@
-#Front-end
+# Front-end
 
-####Front-end for the Groupify project.
+#### Front-end for the Groupify project.
 
 ---
 
