@@ -80,9 +80,15 @@
                     <div class="modal-background"></div>
                     <div class="modal-content">
                         <div class="box">
-                            <div class="columns">
-                                <div class="column is-half">
-                                    <p>asdasdasdasdasdasdasdasd</p>
+                            <div class="columns is-multiline">
+                                <div class="column is-full is-size-4">
+                                    <p>Student student</p>
+                                </div>
+                                <div class="column divider is-full">
+                                    <hr class="group-box">
+                                </div>
+                                <div class="column is-full is-size-4">
+                                    <p>Student student</p>
                                 </div>
                             </div>
                         </div>
