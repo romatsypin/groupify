@@ -75,12 +75,16 @@
                         </button>
                     </div>
                 </div>
+<!--                Modals-->
                 <div id="modal-1" class="modal">
                     <div class="modal-background"></div>
                     <div class="modal-content">
-                        <!-- Any other Bulma elements you want -->
                         <div class="box">
-                            <p>asdasdasdasdasdasdasdasd</p>
+                            <div class="columns">
+                                <div class="column is-half">
+                                    <p>asdasdasdasdasdasdasdasd</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="modal-close is-large" aria-label="close"></button>
