@@ -7,75 +7,97 @@
     <link href="Assets/bulma.css" rel="stylesheet">
 <!--    https://wikiki.github.io/form/slider/ -->
     <link href="Assets/Slider/bulma-slider.min.css" rel="stylesheet">
+<!--    Font Awesome -->
+    <script defer src="Assets/Font-Awesome-All.js"></script>
     <title>Site</title>
 </head>
 <body>
-<div class="container is-max-desktop mt-4">
-    <div class="columns has-background-primary-light">
-        <div class="column">
-            <div class="dropdown">
-                <div class="dropdown-trigger">
-                    <button class="button" onclick="myFunction()" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Click me</span>
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                    <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
-                            Overview
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Modifiers
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Grid
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Form
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Elements
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Components
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            Layout
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            More
-                        </a>
+    <div class="container is-max-widescreen mt-4">
+        <div class="columns has-background-primary-light">
+            <div class="column">
+<!--                Classes dropdown menu -->
+                <div class="dropdown block">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                            <span>Class 1</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+    <!--                Probably a PHP / MySQL loop here to provide some classes?-->
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                                Class 1
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 2
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 3
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 4
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                Class 5
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="columns">
-                <div class="column">
-                    <p>1</p>
+    <!--            Another PHP / MySQL script to loop the number of groups-->
+                <div class="columns is-multiline is-mobile">
+                    <div class="column is-one-quarter has-text-centered">
+                        <button class="button is-info modal-button" data-target="modal-1" aria-haspopup="true">
+                            Group 1
+                        </button>
+                    </div>
+                    <div class="column is-one-quarter has-text-centered">
+                        <button class="button is-info">
+                            Group 2
+                        </button>
+                    </div>
+                    <div class="column is-one-quarter has-text-centered">
+                        <button class="button is-info">
+                            Group 3
+                        </button>
+                    </div>
+                    <div class="column is-one-quarter has-text-centered">
+                        <button class="button is-info">
+                            Group 4
+                        </button>
+                    </div>
+                    <div class="column is-one-quarter has-text-centered">
+                        <button class="button is-info">
+                            Group 5
+                        </button>
+                    </div>
                 </div>
-                <div class="column">
-                    <p>2</p>
+                <div id="modal-1" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                        <!-- Any other Bulma elements you want -->
+                        <div class="box">
+                            <p>asdasdasdasdasdasdasdasd</p>
+                        </div>
+                    </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
                 </div>
+    <!--            <label>
+                    <input id="sliderWithValue" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
+                    <output for="sliderWithValue">50</output>
+                </label>
+                <label>
+                    <input id="sliderWithValue1" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
+                    <output for="sliderWithValue1">50</output>
+                </label>-->
             </div>
-            <label>
-                <input id="sliderWithValue" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
-                <output for="sliderWithValue">50</output>
-            </label>
-            <label>
-                <input id="sliderWithValue1" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
-                <output for="sliderWithValue1">50</output>
-            </label>
         </div>
     </div>
-</div>
-    <?php
-
-
-    ?>
 </body>
+<script src="Assets/Modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/Slider/bulma-slider.min.js"></script>
 <!--Manages the slider output values -->
