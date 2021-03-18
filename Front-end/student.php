@@ -9,7 +9,7 @@
     <link href="Assets/Slider/bulma-slider.min.css" rel="stylesheet">
 <!--    Font Awesome -->
     <script defer src="Assets/Font-Awesome-All.js"></script>
-    <title>Site</title>
+    <title>Students' page</title>
 </head>
 <body>
     <div class="container is-max-widescreen mt-4">
@@ -47,14 +47,6 @@
                         </div>
                     </div>
                 </div>
-    <!--            Another PHP / MySQL script to loop the number of groups-->
-                <div class="columns is-multiline is-mobile">
-                    <div class="column is-half has-text-centered">
-                        <button class="button is-info">
-                            Group 1
-                        </button>
-                    </div>
-                </div>
 <!--                Sliders-->
 <!--                Remember to change the input ID and output "for" for each individual slider-->
                 <div class="content has-text-centered">
@@ -80,11 +72,11 @@
                 </div>
 <!--                "Footer" buttons -->
                 <div class="block has-text-right">
-                    <button id="done-button" class="button is-success">
+                    <button id="submit-button" class="button is-success">
                         <span class="icon is-small">
                           <em class="fas fa-check"></em>
                         </span>
-                        <span>Done</span>
+                        <span>Submit</span>
                     </button>
                 </div>
             </div>
