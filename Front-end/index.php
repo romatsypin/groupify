@@ -75,26 +75,6 @@
                         </button>
                     </div>
                 </div>
-<!--                Modals-->
-                <div id="modal-1" class="modal">
-                    <div class="modal-background"></div>
-                    <div class="modal-content">
-                        <div class="box">
-                            <div class="columns is-multiline">
-                                <div class="column is-full is-size-4">
-                                    <p>Student student</p>
-                                </div>
-                                <div class="column divider is-full">
-                                    <hr class="group-box">
-                                </div>
-                                <div class="column is-full is-size-4">
-                                    <p>Student student</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="modal-close is-large" aria-label="close"></button>
-                </div>
     <!--            <label>
                     <input id="sliderWithValue" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
                     <output for="sliderWithValue">50</output>
@@ -103,7 +83,41 @@
                     <input id="sliderWithValue1" class="slider has-output is-fullwidth is-info" min="0" max="100" value="50" step="1" type="range">
                     <output for="sliderWithValue1">50</output>
                 </label>-->
+                <div class="block has-text-right">
+                    <button id="generate-groups" class="button is-info">
+                        <span class="icon is-small">
+                          <i class="fas fa-plus"></i>
+                        </span>
+                        <span>Generate groups</span>
+                    </button>
+                    <button id="done-button" class="button is-success">
+                        <span class="icon is-small">
+                          <i class="fas fa-check"></i>
+                        </span>
+                        <span>Done</span>
+                    </button>
+                </div>
             </div>
+        </div>
+        <!--                Modals-->
+        <div id="modal-1" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div class="columns is-multiline">
+                        <div class="column is-full is-size-4">
+                            <p>Student student</p>
+                        </div>
+                        <div class="column divider is-full">
+                            <hr class="group-box">
+                        </div>
+                        <div class="column is-full is-size-4">
+                            <p>Student student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </div>
 </body>
