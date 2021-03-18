@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Assets/bulma.css" rel="stylesheet">
+<!--    https://wikiki.github.io/form/slider/ -->
+    <link href="Assets/Slider/bulma-slider.min.css" rel="stylesheet">
 <!--    Font Awesome -->
     <script defer src="Assets/Font-Awesome-All.js"></script>
     <title>Site</title>
@@ -47,39 +49,37 @@
                 </div>
     <!--            Another PHP / MySQL script to loop the number of groups-->
                 <div class="columns is-multiline is-mobile">
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info modal-button" data-target="modal-1" aria-haspopup="true">
+                    <div class="column is-half has-text-centered">
+                        <button class="button is-info">
                             Group 1
                         </button>
                     </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 2
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 3
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 4
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 5
-                        </button>
-                    </div>
                 </div>
+<!--                Sliders-->
+<!--                Remember to change the input ID and output "for" for each individual slider-->
+                <div class="content has-text-centered">
+                    <h4>Hyped?</h4>
+                    <label class="block">
+                        <input id="sliderWithValue" class="slider is-fullwidth is-medium is-circle is-info" min="0" max="100" value="50" step="1" type="range">
+                        <output class="button is-static is-info" for="sliderWithValue">50</output>
+                    </label>
+                </div>
+                <div class="content has-text-centered">
+                    <h4>Sick?</h4>
+                    <label class="block">
+                        <input id="sliderWithValue1" class="slider is-fullwidth is-medium is-circle is-info" min="0" max="100" value="50" step="1" type="range">
+                        <output class="button is-static is-info" for="sliderWithValue1">50</output>
+                    </label>
+                </div>
+                <div class="content has-text-centered">
+                    <h4>Trivago</h4>
+                    <label class="block">
+                        <input id="sliderWithValue2" class="slider is-fullwidth is-medium is-circle is-info" min="0" max="100" value="50" step="1" type="range">
+                        <output class="button is-static is-info" for="sliderWithValue2">50</output>
+                    </label>
+                </div>
+<!--                "Footer" buttons -->
                 <div class="block has-text-right">
-                    <button id="generate-groups" class="button is-info">
-                        <span class="icon is-small">
-                          <em class="fas fa-plus"></em>
-                        </span>
-                        <span>Generate groups</span>
-                    </button>
                     <button id="done-button" class="button is-success">
                         <span class="icon is-small">
                           <em class="fas fa-check"></em>
@@ -89,27 +89,10 @@
                 </div>
             </div>
         </div>
-        <!--                Modals-->
-        <div id="modal-1" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <div class="columns is-multiline">
-                        <div class="column is-full is-size-4">
-                            <p>Student student</p>
-                        </div>
-                        <div class="column divider is-full">
-                            <hr class="group-box">
-                        </div>
-                        <div class="column is-full is-size-4">
-                            <p>Student student</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
     </div>
 </body>
 <script src="Assets/Modal.js"></script>
 <script src="Assets/dropdown.js"></script>
+<script src="Assets/Slider/bulma-slider.min.js"></script>
+<!--Manages the slider output values -->
+<script>bulmaSlider.attach();</script>
