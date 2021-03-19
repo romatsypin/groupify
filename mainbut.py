@@ -123,9 +123,9 @@ for i in example:
 val = []
 for i in range(len(example)):
     for j in range(len(example["group" + str(i)])):
-        a = example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["student_id"]
-        b = example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["group_id"]
-        c = example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["class_id"]
+        a = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["student_id"])
+        b = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["group_id"])
+        c = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["class_id"])
         val.append((a, b, c))
 print(val)
 
