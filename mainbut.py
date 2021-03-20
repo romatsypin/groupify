@@ -37,29 +37,78 @@ pd.set_option('display.width', 800) #XXX
 
 
 # In[ ]:
+#Selecting data for python calculations
+
+sqlnames = mycursor.execute("SELECT StudentName FROM students")
+namessql = mycursor.fetchall()
+names2 = []
+for x in namessql:
+    names2.append(x[0])
+print(names2)
+
+names = pd.DataFrame(data=names2)
+print(names)
 
 
-# Create a column of names #XXX
-names = pd.DataFrame({"name": ["Roman Tsypin", "Eric Telkkälä", "Topi Aila", "Samantha Bergdahl", "Cezar Budeci", "Tuuli Tapaninen", "Kaisa Otterklau", "Humble Harambe", "Moms Spaghetti", "Sanna Marin", "Wide Putin", "Peter Vesterbacka", "Timo Rally", "Emotional Table", "Bill Gates", "Elon Musk", "Mark Zuckerberg", "Ayn Rand", "Karl Marx", "David Ben-Gurion", "Ekaterina Shulman", "Tukhtaboy Juma", "Igor Smirnov"]})
+sqlgrades = mycursor.execute("SELECT relevant_grades FROM students")
+relgradessql = mycursor.fetchall()
+rel_grades = []
+for x in relgradessql:
+    rel_grades.append(x[0])
+#print(rel_grades)
+names = pd.DataFrame(data=rel_grades)
 
+
+
+sqlirrelgrades = mycursor.execute("SELECT irrelevant_grades FROM students")
+irrelgradessql = mycursor.fetchall()
+irrel_grades = []
+for x in irrelgradessql:
+    irrel_grades.append(x[0])
+#print(irrel_grades)
+names = pd.DataFrame(data=irrel_grades)
+
+
+
+sqlmotivation = mycursor.execute("SELECT motivation FROM students")
+motivationsql = mycursor.fetchall()
+motivation = []
+for x in motivationsql:
+    motivation.append(x[0])
+#print(motivation)
+names = pd.DataFrame(data=motivation)
+
+
+
+sqlGroupID = mycursor.execute("SELECT GroupID FROM students")
+GroupIDsql = mycursor.fetchall()
+group_id = []
+for x in GroupIDsql:
+    group_id.append(x[0])
+#print(group_id)
+names = pd.DataFrame(data=group_id)
+
+
+
+sqlStudentID = mycursor.execute("SELECT UID FROM students")
+StudentIDsql = mycursor.fetchall()
+student_id = []
+for x in StudentIDsql:
+    student_id.append(x[0])
+#print(student_id)
+names = pd.DataFrame(data=student_id)
 
 # In[ ]:
 
 
 # Create some random grades and add them to the dataframe #XXX
-rel_grades = []
-irrel_grades = []
-motivation = []
-group_id = []
-student_id = []
+
+
+
+
 class_id = []
 z = 1
 for i in range(len(names)):
-    rel_grades.append(round(random.uniform(2, 5), 3))
-    irrel_grades.append(round(random.uniform(2, 5), 3))
-    motivation.append(round(random.randint(1, 5)))
-    group_id.append(123)
-    student_id.append(z)
     z = z + 1
     class_id.append(999)
     
@@ -133,8 +182,8 @@ print(val)
 # In[ ]:
 
 
-sql = "INSERT INTO students (student_id, group_id, class_id) VALUES (%s, %s, %s)"
-   
+sql = "INSERT INTO groups (StudentID, GroupID, CourseID) VALUES (%s, %s, %s);"
+
 mycursor.executemany(sql, val)
 
 mydb.commit()
@@ -144,6 +193,8 @@ print(mycursor.rowcount, "record inserted.")
 mycursor.execute("SELECT * FROM students")
 
 myresult = mycursor.fetchall()
+
+
 
 for x in myresult:
     print(x)
