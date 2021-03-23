@@ -14,54 +14,54 @@
         <div class="columns has-background-primary-light">
             <div class="column">
 <!--                Classes dropdown menu -->
-<!--                <div class="dropdown block">-->
-<!--                    <div class="dropdown-trigger">-->
-<!--                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">-->
-<!--                            <span>Class 1</span>-->
-<!--                            <span class="icon is-small">-->
-<!--                                <i class="fas fa-angle-down" aria-hidden="true"></i>-->
-<!--                            </span>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                  Probably a PHP / MySQL loop here to provide some classes?-->
-<!--                     --><?php
-//                    include "db.php";
-//                    $groups = "SELECT GroupID FROM groups order by GroupID";
-//                    $result = $conn->query($groups);
-//
-//                    if ($result->num_rows > 0) {
-//                    // output data of each row
-//                    while($row = $result->fetch_assoc()) {
-//                        echo "<br>"."name: " . $row["GroupID"]."<br>";
-//                    }
-//                    } else {
-//                    echo "0 results";
-//                    }
-//
-//                    $conn->close();
-//                    ?>
-<!--                    -->
-<!--                    <div class="dropdown-menu" id="courses" role="menu">-->
-<!--                        <div class="dropdown-content">-->
-<!--                            <a href="#" class="dropdown-item">-->
-<!--                                Class 1-->
-<!--                            </a>-->
-<!--                            <a href="#" class="dropdown-item">-->
-<!--                                Class 2-->
-<!--                            </a>-->
-<!--                            <a href="#" class="dropdown-item">-->
-<!--                                Class 3-->
-<!--                            </a>-->
-<!--                            <a href="#" class="dropdown-item">-->
-<!--                                Class 4-->
-<!--                            </a>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                            <a href="#" class="dropdown-item">-->
-<!--                                Class 5-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="dropdown block">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                            <span>Class 1</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                  Probably a PHP / MySQL loop here to provide some classes?
+                     <?php
+                    include "db.php";
+                    $groups = "SELECT GroupID FROM groups order by GroupID";
+                    $result = $conn->query($groups);
+
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<br>"."name: " . $row["GroupID"]."<br>";
+                    }
+                    } else {
+                    echo "0 results";
+                    }
+
+                    $conn->close();
+                    ?>
+
+                    <div class="dropdown-menu" id="courses" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                                Class 1
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 2
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 3
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Class 4
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                Class 5
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
 <!--                NEW dropdown menu-->
                 <div class="select dropdown block">
@@ -119,21 +119,21 @@
             </div>
         </div>
         <!--                Modals-->
-<!--        --><?php
-//        include "db.php";
-//        $names = "SELECT StudentName FROM students";
-//                    $result = $conn->query($names);
-//
-//                    if ($result->num_rows > 0) {
-//                    // output data of each row
-//                    while($row = $result->fetch_assoc()) {
-//                        echo "<br>"."name: " . $row["StudentName"]."<br>";
-//                    }
-//                    } else {
-//                    echo "0 results";
-//                    }
-//        $conn->close();
-//        ?>
+        <?php
+        include "db.php";
+        $names = "SELECT StudentName FROM students";
+                    $result = $conn->query($names);
+
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<br>"."name: " . $row["StudentName"]."<br>";
+                    }
+                    } else {
+                    echo "0 results";
+                    }
+        $conn->close();
+        ?>
         <div id="modal-1" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content">
