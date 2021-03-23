@@ -87,7 +87,7 @@ for x in GroupIDsql:
     group_id.append(x[0])
 #print(group_id)
 names = pd.DataFrame(data=group_id)
-
+print(GroupIDsql)
 
 
 sqlStudentID = mycursor.execute("SELECT UID FROM students")
@@ -111,7 +111,7 @@ z = 1
 for i in range(len(names)):
     z = z + 1
     class_id.append(999)
-    
+
 
 
 # In[ ]:
@@ -162,7 +162,7 @@ while len(example["group" + str(len(example) - 1)]) < min_memb:
     example = grouping(names_sorted, min_memb, max_memb, alpha)
 for key in example:
     example[key]["group_id"] = key
-for i in example: 
+for i in example:
     print(example[i])
 
 
@@ -181,10 +181,9 @@ print(val)
 
 # In[ ]:
 
+sql = "INSERT INTO `students` (`UID`, `StudentName`, `relevant_grades`, `irrelevant_grades`, `motivation`) VALUES (NULL, 'Test2', '1.12', '4.54', '2');"
 
-sql = "INSERT INTO groups (StudentID, GroupID, CourseID) VALUES (%s, %s, %s);"
-
-mycursor.executemany(sql, val)
+mycursor.execute(sql)
 
 mydb.commit()
 

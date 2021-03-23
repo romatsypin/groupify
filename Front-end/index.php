@@ -24,6 +24,23 @@
                         </button>
                     </div>
     <!--                Probably a PHP / MySQL loop here to provide some classes?-->
+                     <?php
+                     include "db.php";
+                    $groups = "SELECT GroupID FROM groups order by GroupID";
+                    $result = $conn->query($groups);
+
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<br>"."name: " . $row["GroupID"]."<br>";
+                    }
+                    } else {
+                    echo "0 results";
+                    }
+
+                    $conn->close();
+                    ?>
+
                     <div class="dropdown-menu" id="dropdown-menu3" role="menu">
                         <div class="dropdown-content">
                             <a href="#" class="dropdown-item">
@@ -90,6 +107,21 @@
             </div>
         </div>
         <!--                Modals-->
+        <?php
+        include "db.php";
+        $names = "SELECT StudentName FROM students";
+                    $result = $conn->query($names);
+
+                    if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<br>"."name: " . $row["StudentName"]."<br>";
+                    }
+                    } else {
+                    echo "0 results";
+                    }
+        $conn->close();
+        ?>
         <div id="modal-1" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content">
