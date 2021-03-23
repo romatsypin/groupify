@@ -83,7 +83,7 @@
         </div>
     </div>
 </body>
-<script src="Assets/Modal.js"></script>
+<script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/Slider/bulma-slider.min.js"></script>
 <!--Manages the slider output values -->

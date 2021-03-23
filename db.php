@@ -11,7 +11,6 @@ if ($conn->connect_error) {
     die("Connection failed: ".$conn->connect_error);
 }
 else {
-    echo "Connection succesful";
+    echo "Connection successful";
 }
 mysqli_query($conn);
-?>

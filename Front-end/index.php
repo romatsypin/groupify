@@ -7,60 +7,72 @@
     <link href="Assets/bulma.css" rel="stylesheet">
 <!--    Font Awesome -->
     <script defer src="Assets/Font-Awesome-All.js"></script>
-    <title>Site</title>
+    <title>Teachers' page</title>
 </head>
 <body>
     <div class="container is-max-widescreen mt-4">
         <div class="columns has-background-primary-light">
             <div class="column">
 <!--                Classes dropdown menu -->
-                <div class="dropdown block">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                            <span>Class 1</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-    <!--                Probably a PHP / MySQL loop here to provide some classes?-->
-                     <?php
-                     include "db.php";
-                    $groups = "SELECT GroupID FROM groups order by GroupID";
-                    $result = $conn->query($groups);
+<!--                <div class="dropdown block">-->
+<!--                    <div class="dropdown-trigger">-->
+<!--                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">-->
+<!--                            <span>Class 1</span>-->
+<!--                            <span class="icon is-small">-->
+<!--                                <i class="fas fa-angle-down" aria-hidden="true"></i>-->
+<!--                            </span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                  Probably a PHP / MySQL loop here to provide some classes?-->
+<!--                     --><?php
+//                    include "db.php";
+//                    $groups = "SELECT GroupID FROM groups order by GroupID";
+//                    $result = $conn->query($groups);
+//
+//                    if ($result->num_rows > 0) {
+//                    // output data of each row
+//                    while($row = $result->fetch_assoc()) {
+//                        echo "<br>"."name: " . $row["GroupID"]."<br>";
+//                    }
+//                    } else {
+//                    echo "0 results";
+//                    }
+//
+//                    $conn->close();
+//                    ?>
+<!--                    -->
+<!--                    <div class="dropdown-menu" id="courses" role="menu">-->
+<!--                        <div class="dropdown-content">-->
+<!--                            <a href="#" class="dropdown-item">-->
+<!--                                Class 1-->
+<!--                            </a>-->
+<!--                            <a href="#" class="dropdown-item">-->
+<!--                                Class 2-->
+<!--                            </a>-->
+<!--                            <a href="#" class="dropdown-item">-->
+<!--                                Class 3-->
+<!--                            </a>-->
+<!--                            <a href="#" class="dropdown-item">-->
+<!--                                Class 4-->
+<!--                            </a>-->
+<!--                            <hr class="dropdown-divider">-->
+<!--                            <a href="#" class="dropdown-item">-->
+<!--                                Class 5-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                    if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<br>"."name: " . $row["GroupID"]."<br>";
-                    }
-                    } else {
-                    echo "0 results";
-                    }
+<!--                NEW dropdown menu-->
+                <div class="select dropdown block">
+                    <select id="courses-select" class="form-control">
+                        <option value="course1">Course 1</option>
+                        <option value="course2">Course 2</option>
+                        <option value="course3">Course 3</option>
+                        <option value="course4">Course 4</option>
+                        <option value="course5">Course 5</option>
 
-                    $conn->close();
-                    ?>
-
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                                Class 1
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 2
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 3
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 4
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                Class 5
-                            </a>
-                        </div>
-                    </div>
+                    </select>
                 </div>
     <!--            Another PHP / MySQL script to loop the number of groups-->
                 <div class="columns is-multiline is-mobile">
@@ -107,21 +119,21 @@
             </div>
         </div>
         <!--                Modals-->
-        <?php
-        include "db.php";
-        $names = "SELECT StudentName FROM students";
-                    $result = $conn->query($names);
-
-                    if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<br>"."name: " . $row["StudentName"]."<br>";
-                    }
-                    } else {
-                    echo "0 results";
-                    }
-        $conn->close();
-        ?>
+<!--        --><?php
+//        include "db.php";
+//        $names = "SELECT StudentName FROM students";
+//                    $result = $conn->query($names);
+//
+//                    if ($result->num_rows > 0) {
+//                    // output data of each row
+//                    while($row = $result->fetch_assoc()) {
+//                        echo "<br>"."name: " . $row["StudentName"]."<br>";
+//                    }
+//                    } else {
+//                    echo "0 results";
+//                    }
+//        $conn->close();
+//        ?>
         <div id="modal-1" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content">
@@ -143,5 +155,6 @@
         </div>
     </div>
 </body>
-<script src="Assets/Modal.js"></script>
+<script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
+<script src="Assets/course-select.js"></script>
