@@ -23,7 +23,7 @@
                             </span>
                         </button>
                     </div>
-                  Probably a PHP / MySQL loop here to provide some classes?
+                    <!--Probably a PHP / MySQL loop here to provide some classes? -->
                      <?php
                     include "db.php";
                     $groups = "SELECT GroupID FROM groups order by GroupID";
