@@ -23,9 +23,9 @@
                             </span>
                         </button>
                     </div>
-                    <!--Probably a PHP / MySQL loop here to provide some classes? -->
-                     <?php
-                    include "db.php";
+<!--                  Probably a PHP / MySQL loop here to provide some classes?-->
+                    <?php
+                    include "../db.php";
                     $groups = "SELECT GroupID FROM groups order by GroupID";
                     $result = $conn->query($groups);
 
@@ -37,43 +37,22 @@
                     } else {
                     echo "0 results";
                     }
-
-                    $conn->close();
                     ?>
 
-                    <div class="dropdown-menu" id="courses" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                                Class 1
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 2
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 3
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                Class 4
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                Class 5
-                            </a>
-                        </div>
+                    <!--                NEW dropdown menu-->
+                    <div class="select dropdown block">
+                        <select id="courses-select" class="form-control">
+                            <option value="course1">Course 1</option>
+                            <option value="course2">Course 2</option>
+                            <option value="course3">Course 3</option>
+                            <option value="course4">Course 4</option>
+                            <option value="course5">Course 5</option>
+                        </select>
                     </div>
                 </div>
 
-<!--                NEW dropdown menu-->
-                <div class="select dropdown block">
-                    <select id="courses-select" class="form-control">
-                        <option value="course1">Course 1</option>
-                        <option value="course2">Course 2</option>
-                        <option value="course3">Course 3</option>
-                        <option value="course4">Course 4</option>
-                        <option value="course5">Course 5</option>
+<!--                MODAL BUTTONS-->
 
-                    </select>
-                </div>
     <!--            Another PHP / MySQL script to loop the number of groups-->
                 <div class="columns is-multiline is-mobile">
                     <div class="column is-one-quarter has-text-centered">
@@ -102,6 +81,10 @@
                         </button>
                     </div>
                 </div>
+                <?php
+                $course = $_POST['course-select'];
+                echo $course;
+                ?>
                 <div class="block has-text-right">
                     <button id="generate-groups" class="button is-info">
                         <span class="icon is-small">
@@ -120,7 +103,6 @@
         </div>
         <!--                Modals-->
         <?php
-        include "db.php";
         $names = "SELECT StudentName FROM students";
                     $result = $conn->query($names);
 
@@ -155,6 +137,28 @@
         </div>
     </div>
 </body>
+<script>
+//    Gets the ID of the select menu
+    let selectedCourse = document.getElementById("courses-select");
+    //Changes the value of the select menu depending on the URL parameter
+    switch ("<?php echo $_GET['course'];?>") {
+        case "course1":
+            selectedCourse.selectedIndex = 0;
+            break;
+        case "course2":
+            selectedCourse.selectedIndex = 1;
+            break;
+        case "course3":
+            selectedCourse.selectedIndex = 2;
+            break;
+        case "course4":
+            selectedCourse.selectedIndex = 3;
+            break;
+        case "course5":
+            selectedCourse.selectedIndex = 4;
+            break;
+    }
+</script>
 <script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/course-select.js"></script>
