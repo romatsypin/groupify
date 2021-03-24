@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Mar 20, 2021 at 09:01 PM
+-- Generation Time: Mar 24, 2021 at 04:11 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `new`
 --
 
 -- --------------------------------------------------------
@@ -58,29 +58,31 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`GroupID`, `StudentID`, `CourseID`) VALUES
-('group6', 7, 999),
-('group3', 8, 999),
-('group0', 9, 999),
-('group5', 10, 999),
-('group1', 11, 999),
-('group2', 13, 999),
-('group3', 14, 999),
-('group6', 15, 999),
-('group4', 16, 999),
-('group2', 17, 999),
-('group4', 18, 999),
-('group3', 19, 999),
-('group2', 20, 999),
-('group5', 21, 999),
-('group3', 22, 999),
-('group0', 23, 999),
-('group4', 24, 999),
-('group4', 25, 999),
-('group1', 26, 999),
-('group0', 27, 999),
-('group6', 28, 999),
-('group5', 29, 999),
-('group1', 30, 999);
+('Group 7', 7, 999),
+('Group 3', 8, 999),
+('Group 0', 9, 999),
+('Group 5', 10, 999),
+('Group 1', 11, 999),
+('Group 2', 13, 999),
+('Group 3', 14, 999),
+('Group 6', 15, 999),
+('Group 4', 16, 999),
+('Group 2', 17, 999),
+('Group 4', 18, 999),
+('Group 4', 19, 999),
+('Group 2', 20, 999),
+('Group 6', 21, 999),
+('Group 3', 22, 999),
+('Group 0', 23, 999),
+('Group 5', 24, 999),
+('Group 5', 25, 999),
+('Group 1', 26, 999),
+('Group 0', 27, 999),
+('Group 6', 28, 999),
+('Group 5', 29, 999),
+('Group 1', 30, 999),
+('Group 7', 31, 999),
+('Group 7', 32, 999);
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,9 @@ INSERT INTO `students` (`UID`, `StudentName`, `relevant_grades`, `irrelevant_gra
 (27, 'David Ben-Gurion', 4.964, 3.39, 3, '0'),
 (28, 'Ekaterina Shulman', 2.033, 2.724, 5, '0'),
 (29, 'Tukhtaboy Juma', 3.332, 3.193, 2, '0'),
-(30, 'Igor Smirnov', 4.254, 4.613, 1, '0');
+(30, 'Igor Smirnov', 4.254, 4.613, 1, '0'),
+(31, 'Test2', 1.12, 4.54, 2, '0'),
+(32, 'Test2', 1.12, 4.54, 2, '0');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +168,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables
