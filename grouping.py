@@ -12,7 +12,7 @@ def grouping(group, min_memb, max_memb, alpha = 0):
     group_num = 0
     groups_dict = {}
     while student < len(group):
-        key_name = 'group' + str(group_num)
+        key_name = 'Group ' + str(group_num)
         groups_dict[key_name] = group.iloc[[]]
         if student + 1 != len(group):
             groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])
@@ -53,5 +53,6 @@ def grouping(group, min_memb, max_memb, alpha = 0):
             break
         group_num = group_num + 1
     if min_memb == max_memb and len(group) % min_memb != 0:
+        print("Warning! Your group size selection may leave some members in smaller groups than selected")
         print("Warning! Your group size selection may leave some members in smaller groups than selected")
     return groups_dict

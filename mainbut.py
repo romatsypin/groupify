@@ -16,7 +16,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="root",
     password="root",
-    database="test",
+    database="new",
     port=3307
 )
 
@@ -156,7 +156,7 @@ max_memb = 4
 
 alpha_interval = 0
 example = grouping(names_sorted, min_memb, max_memb)
-while len(example["group" + str(len(example) - 1)]) < min_memb:
+while len(example["Group " + str(len(example) - 1)]) < min_memb:
     alpha_interval = alpha_interval + 0.05
     alpha = round(random.uniform(-alpha_interval, alpha_interval), 3)
     example = grouping(names_sorted, min_memb, max_memb, alpha)
@@ -171,19 +171,19 @@ for i in example:
 
 val = []
 for i in range(len(example)):
-    for j in range(len(example["group" + str(i)])):
-        a = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["student_id"])
-        b = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["group_id"])
-        c = str(example["group" + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["class_id"])
+    for j in range(len(example["Group " + str(i)])):
+        a = str(example["Group " + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["student_id"])
+        b = str(example["Group " + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["group_id"])
+        c = str(example["Group " + str(i)][['student_id', 'group_id', "class_id"]].iloc[j]["class_id"])
         val.append((a, b, c))
 print(val)
 
 
 # In[ ]:
 
-sql = "INSERT INTO `students` (`UID`, `StudentName`, `relevant_grades`, `irrelevant_grades`, `motivation`) VALUES (NULL, 'Test2', '1.12', '4.54', '2');"
+sql = "INSERT INTO `groups` (`StudentID`, `GroupID`, `CourseID`) VALUES (%s, %s, %s);"
 
-mycursor.execute(sql)
+mycursor.executemany(sql, val)
 
 mydb.commit()
 
