@@ -26,17 +26,8 @@
 <!--                  Probably a PHP / MySQL loop here to provide some classes?-->
                     <?php
                     include "../db.php";
-                    $groups = "SELECT GroupID FROM groups order by GroupID";
+                    $groups = "SELECT DISTINCT GroupID FROM groups order by GroupID";
                     $result = $conn->query($groups);
-
-                    if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<br>"."name: " . $row["GroupID"]."<br>";
-                    }
-                    } else {
-                    echo "0 results";
-                    }
                     ?>
 
                     <!--                NEW dropdown menu-->
@@ -55,31 +46,50 @@
 
     <!--            Another PHP / MySQL script to loop the number of groups-->
                 <div class="columns is-multiline is-mobile">
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info modal-button" data-target="modal-1" aria-haspopup="true">
-                            Group 1
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 2
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 3
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 4
-                        </button>
-                    </div>
-                    <div class="column is-one-quarter has-text-centered">
-                        <button class="button is-info">
-                            Group 5
-                        </button>
-                    </div>
+                    <?php
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            foreach ($result as $row) {
+                                echo
+                                    '<div class="column is-one-quarter has-text-centered">
+                                    <button class="button is-info modal-button" data-target="'.$row["GroupID"].'" aria-haspopup="true">
+                                    '.$row["GroupID"].'
+                                    </button>
+                                </div>';
+
+                            }
+                            while($row = $result->fetch_assoc()) {
+//                                echo "<br>"."name: " . $row["GroupID"]."<br>";
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+                    ?>
+<!--                    <div class="column is-one-quarter has-text-centered">-->
+<!--                        <button class="button is-info modal-button" data-target="modal-1" aria-haspopup="true">-->
+<!--                            Group 1-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="column is-one-quarter has-text-centered">-->
+<!--                        <button class="button is-info">-->
+<!--                            Group 2-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="column is-one-quarter has-text-centered">-->
+<!--                        <button class="button is-info">-->
+<!--                            Group 3-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="column is-one-quarter has-text-centered">-->
+<!--                        <button class="button is-info">-->
+<!--                            Group 4-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="column is-one-quarter has-text-centered">-->
+<!--                        <button class="button is-info">-->
+<!--                            Group 5-->
+<!--                        </button>-->
+<!--                    </div>-->
                 </div>
                 <?php
                 $course = $_POST['course-select'];
