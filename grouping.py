@@ -52,7 +52,4 @@ def grouping(group, min_memb, max_memb, alpha = 0):
         if student + 1 == len(group) and group.index.values[-1] == groups_dict[key_name].index.values[-1]:
             break
         group_num = group_num + 1
-    if min_memb == max_memb and len(group) % min_memb != 0:
-        print("Warning! Your group size selection may leave some members in smaller groups than selected")
-        print("Warning! Your group size selection may leave some members in smaller groups than selected")
     return groups_dict
