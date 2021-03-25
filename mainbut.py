@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-# XXX means can be deleted in final deploy
-
-
-# In[ ]:
-
-
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -22,10 +10,6 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-
-# In[ ]:
-
-
 import pandas as pd
 import numpy as np
 import random
@@ -35,8 +19,6 @@ pd.set_option('display.max_rows', 500) #XXX
 pd.set_option('display.max_columns', 500) #XXX
 pd.set_option('display.width', 800) #XXX
 
-
-# In[ ]:
 #Selecting data for python calculations
 
 sqlnames = mycursor.execute("SELECT StudentName FROM students")
@@ -46,8 +28,11 @@ for x in namessql:
     names2.append(x[0])
 print(names2)
 
+
+
 names = pd.DataFrame(data=names2)
 print(names)
+
 
 
 sqlgrades = mycursor.execute("SELECT relevant_grades FROM students")
@@ -98,24 +83,15 @@ for x in StudentIDsql:
 #print(student_id)
 names = pd.DataFrame(data=student_id)
 
-# In[ ]:
 
 
 # Create some random grades and add them to the dataframe #XXX
-
-
-
 
 class_id = []
 z = 1
 for i in range(len(names)):
     z = z + 1
     class_id.append(999)
-
-
-
-# In[ ]:
-
 
 # Create the table with grades
 names["relevant_grades"] = rel_grades
@@ -126,10 +102,6 @@ names["student_id"] = student_id
 names["class_id"] = class_id
 print(names)
 
-
-# In[ ]:
-
-
 # Calculating rating for students and adding it to the table
 rating = []
 for i in range(len(names)):
@@ -138,15 +110,10 @@ names["rating"] = rating
 print(names)
 
 
-# In[ ]:
-
 
 # Sorting the table by rating
 names_sorted = names.sort_values("rating", ascending = False, ignore_index = True)
 print(names_sorted)
-
-
-# In[ ]:
 
 
 # Try grouping with different min and max members:
@@ -166,9 +133,6 @@ for i in example:
     print(example[i])
 
 
-# In[ ]:
-
-
 val = []
 for i in range(len(example)):
     for j in range(len(example["Group " + str(i)])):
@@ -179,7 +143,6 @@ for i in range(len(example)):
 print(val)
 
 
-# In[ ]:
 
 sql = "INSERT INTO `groups` (`StudentID`, `GroupID`, `CourseID`) VALUES (%s, %s, %s);"
 
