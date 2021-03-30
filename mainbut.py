@@ -143,8 +143,9 @@ for i in range(len(example)):
         val.append((a, b, c))
 print(val)
 
-
-
+destroy = "DELETE from groups"
+mycursor.execute(destroy)
+mydb.commit()
 sql = "INSERT INTO `groups` (`StudentID`, `GroupID`, `CourseID`) VALUES (%s, %s, %s);"
 
 mycursor.executemany(sql, val)
