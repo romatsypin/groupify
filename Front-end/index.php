@@ -59,7 +59,7 @@
                 echo $course;
                 ?>
                 <div class="block has-text-right">
-                    <button id="generate-groups" class="button is-info">
+                    <button id="generate-groups" class="button is-info"<?php shell_exec("python C:\MAMP\htdocs\groupify\mainbut.py") ?>>
                         <span class="icon is-small">
                           <em class="fas fa-plus"></em>
                         </span>
