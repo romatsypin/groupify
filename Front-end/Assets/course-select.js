@@ -1,6 +1,5 @@
 //Finds the select menu in the document
 let currentCourse = document.getElementById("courses-select");
-console.log(currentCourse.value);
 
 //Browser API
 const query = new URLSearchParams(window.location.search);

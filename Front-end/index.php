@@ -15,15 +15,6 @@
             <div class="column">
 <!--                Classes dropdown menu -->
                 <div class="dropdown block">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                            <span>Class 1</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-<!--                  Probably a PHP / MySQL loop here to provide some classes?-->
                     <?php
                     include "../db.php";
                     $groups = "SELECT DISTINCT GroupID FROM groups order by GroupID";
@@ -58,38 +49,10 @@
                                 </div>';
 
                             }
-                            while($row = $result->fetch_assoc()) {
-//                                echo "<br>"."name: " . $row["GroupID"]."<br>";
-                            }
                         } else {
                             echo "0 results";
                         }
                     ?>
-<!--                    <div class="column is-one-quarter has-text-centered">-->
-<!--                        <button class="button is-info modal-button" data-target="modal-1" aria-haspopup="true">-->
-<!--                            Group 1-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="column is-one-quarter has-text-centered">-->
-<!--                        <button class="button is-info">-->
-<!--                            Group 2-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="column is-one-quarter has-text-centered">-->
-<!--                        <button class="button is-info">-->
-<!--                            Group 3-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="column is-one-quarter has-text-centered">-->
-<!--                        <button class="button is-info">-->
-<!--                            Group 4-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="column is-one-quarter has-text-centered">-->
-<!--                        <button class="button is-info">-->
-<!--                            Group 5-->
-<!--                        </button>-->
-<!--                    </div>-->
                 </div>
                 <?php
                 $course = $_POST['course-select'];
@@ -111,65 +74,48 @@
                 </div>
             </div>
         </div>
+
         <!--                Modals-->
         <?php
         $names = "SELECT DISTINCT GroupID FROM groups order by GroupID";
-        $studs = "SELECT UID,StudentName FROM students";
-                                        $result = $conn->query($studs);
+        $result = $conn->query($names);
+        $studGroup = 'SELECT groups.GroupID, groups.StudentID from groups LEFT JOIN students on groups.StudentID = students.UID';
 
-                                                    if ($result->num_rows > 0) {
-                                                    // output data of each row
-                                                    while($row = $result->fetch_assoc()) {
-                                                        echo "<br>" . $row["StudentName"]. $row["UID"]."<br>";
-
-                                                    }
-                                                    } else {
-                                                    echo "0 results";
-                                                    }
-                                                            
-                                                            
-                    $result = $conn->query($names);
-
-                    if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo '<div id="'.$row['GroupID'].'" class="modal">
-                        <div class="modal-background"></div>
-                        <div class="modal-content">
-                            <div class="box">
-                                <div class="columns is-multiline">
-                                    <div class="column is-full is-size-4">
-                                        '.$studGroup = 'SELECT groups.GroupID, groups.StudentID from groups LEFT JOIN students on groups.StudentID = students.UID';
-                                                            $result = $conn->query($studGroup);
-                                                            
-                                                            if ($result->num_rows > 0) {
-                                                            // output data of each row
-                                                            while($row = $result->fetch_assoc()) {
-                                                                $match = $row["GroupID"];
-                                                                echo "<br>" . $row["GroupID"]."  ". $row["StudentID"]."<br>";
-                                                            }
-                                                            } else {
-                                                            echo "0 results";
-                                                            }
-                                                    
-                                                            '
-                                    </div>
+        if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $group = $row["GroupID"];
+            echo '<div id="'.$row['GroupID'].'" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div class="columns is-multiline">
+                            '?>
+                            <?php
+//                          Query for getting the students' names for each group individually
+                            $test = "SELECT groups.GroupID, groups.StudentID, students.StudentName from groups LEFT JOIN students on groups.StudentID = students.UID WHERE groups.GroupID ='$group'";
+                            $result1 = $conn->query($test);
+//                            Loop for individual students to be put into modals
+                            while($row = $result1->fetch_assoc()) {
+                                echo '
+                                    <div class="column is-full is-size-4">'.
+                                        $row['StudentName'].
+                                    '</div>
                                     <div class="column divider is-full">
                                         <hr class="group-box">
-                                    </div>
-                                    <div class="column is-full is-size-4">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="modal-close is-large" aria-label="close"></button>
-                    </div>';
-                    }
-                    } else {
-                    echo "0 results";
-                    }
-                    
+                                    </div>';
+                            }?>
+                        <?php echo'
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>';
+        }
+        } else {
+        echo "0 results";
+        }
+
         $conn->close();
         
         ?>
