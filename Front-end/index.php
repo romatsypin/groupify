@@ -58,8 +58,8 @@
                 $course = $_POST['course-select'];
                 echo $course;
                 ?>
-                <div class="block has-text-right">
-                    <button id="generate-groups" class="button is-info"<?php shell_exec("python C:\MAMP\htdocs\groupify\mainbut.py") ?>>
+                <div class="block has-text-right"> 
+                    <button id="generate-groups" class="button is-info" onclick="<?php exec('python ../mainbut.py') ?>">
                         <span class="icon is-small">
                           <em class="fas fa-plus"></em>
                         </span>
@@ -144,6 +144,7 @@
             break;
     }
 </script>
+ 
 <script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/course-select.js"></script>
