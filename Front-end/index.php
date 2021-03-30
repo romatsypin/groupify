@@ -113,38 +113,67 @@
         </div>
         <!--                Modals-->
         <?php
-        $names = "SELECT StudentName FROM students";
+        $names = "SELECT DISTINCT GroupID FROM groups order by GroupID";
+        $studs = "SELECT UID,StudentName FROM students";
+                                        $result = $conn->query($studs);
+
+                                                    if ($result->num_rows > 0) {
+                                                    // output data of each row
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo "<br>" . $row["StudentName"]. $row["UID"]."<br>";
+
+                                                    }
+                                                    } else {
+                                                    echo "0 results";
+                                                    }
+                                                            
+                                                            
                     $result = $conn->query($names);
 
                     if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<br>"."name: " . $row["StudentName"]."<br>";
+                        echo '<div id="'.$row['GroupID'].'" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <div class="box">
+                                <div class="columns is-multiline">
+                                    <div class="column is-full is-size-4">
+                                        '.$studGroup = 'SELECT groups.GroupID, groups.StudentID from groups LEFT JOIN students on groups.StudentID = students.UID';
+                                                            $result = $conn->query($studGroup);
+                                                            
+                                                            if ($result->num_rows > 0) {
+                                                            // output data of each row
+                                                            while($row = $result->fetch_assoc()) {
+                                                                $match = $row["GroupID"];
+                                                                echo "<br>" . $row["GroupID"]."  ". $row["StudentID"]."<br>";
+                                                            }
+                                                            } else {
+                                                            echo "0 results";
+                                                            }
+                                                    
+                                                            '
+                                    </div>
+                                    <div class="column divider is-full">
+                                        <hr class="group-box">
+                                    </div>
+                                    <div class="column is-full is-size-4">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>';
                     }
                     } else {
                     echo "0 results";
                     }
+                    
         $conn->close();
+        
         ?>
-        <div id="modal-1" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <div class="columns is-multiline">
-                        <div class="column is-full is-size-4">
-                            <p>Student student</p>
-                        </div>
-                        <div class="column divider is-full">
-                            <hr class="group-box">
-                        </div>
-                        <div class="column is-full is-size-4">
-                            <p>Student student</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
+        
     </div>
 </body>
 <script>
