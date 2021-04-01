@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import mysql.connector
+import sys
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -119,8 +120,8 @@ print(names_sorted)
 
 # Try grouping with different min and max members:
 
-min_memb = 3
-max_memb = 4
+min_memb = int(sys.argv[1])
+max_memb = int(sys.argv[2])
 
 alpha_interval = 0
 example = grouping(names_sorted, min_memb, max_memb)

@@ -91,19 +91,14 @@
                         <div class="content has-text-centered">
                             <h4>Minimum members:</h4>
                             <label class="block">
-                                <input id="sliderWithValue" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="4" step="1" type="range">
+                                <input id="sliderWithValue" name="minMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="4" step="1" type="range">
                                 <output class="button is-static is-info" for="sliderWithValue">4</output>
                             </label>
                         </div>
-                        <?php
-                            $min = $_POST['min-select'];
-                            $max = $_POST['max-select'];
-                            echo $min . " " . $max;
-                        ?>
                         <div class="content has-text-centered">
                             <h4>Maximum members</h4>
                             <label class="block">
-                                <input id="sliderWithValue1" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="5" step="1" type="range">
+                                <input id="sliderWithValue1" name="maxMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="5" step="1" type="range">
                                 <output class="button is-static is-info" for="sliderWithValue1">5</output>
                             </label>
                         </div>
@@ -126,8 +121,11 @@
 
 <!--    PHP function to execute the python script-->
 <?php
+    $min = $_POST['minMembers'];
+    $max = $_POST['maxMembers'];
+
     if(isset($_POST['generate'])) {
-        exec('python ../mainbut.py');
+        exec('python ../mainbut.py '. $min . " ". $max);
     }
 ?>
 
