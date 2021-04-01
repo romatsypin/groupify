@@ -61,43 +61,9 @@
                 $course = $_POST['course-select'];
                 echo $course;
                 ?>
-                
-                <div class="block has-text-right"> 
-                    <div class="dropdown block">
-                                                          
-                                    <div class="select dropdown block">
-                                        <select id="min-select" class="form-control">
-                                            <option value="min1">Minimum members: 1</option>
-                                            <option value="min2">Minimum members: 2</option>
-                                            <option value="min3">Minimum members: 3</option>
-                                            <option value="min4">Minimum members: 4</option>
-                                            <option value="min5">Minimum members: 5</option>
-                                            <option value="min6">Minimum members: 6</option>
-                                            <option value="min7">Minimum members: 7</option>
-                                            <option value="min8">Minimum members: 8</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <?php
-                                $min = $_POST['min-select'];
-                                echo $min;
-                                ?>
-                <div class="dropdown block">
-                            
-                                    <div class="select dropdown block">
-                                        <select id="max-select" class="form-control">
-                                            <option value="max1">Maximum members: 1</option>
-                                            <option value="max2">Maximum members: 2</option>
-                                            <option value="max3">Maximum members: 3</option>
-                                            <option value="max4">Maximum members: 4</option>
-                                            <option value="max5">Maximum members: 5</option>
-                                            <option value="max6">Maximum members: 6</option>
-                                            <option value="max7">Maximum members: 7</option>
-                                            <option value="max8">Maximum members: 8</option>
-                                        </select>
-                                    </div>
-                                </div>
-                    <button id="generate-groups" class="button is-info" onclick="<?php exec('python ../mainbut.py') ?>">
+<!--                Lower right buttons-->
+                <div class="has-text-right">
+                    <button id="generate-groups" class="button is-info modal-button" data-target="modal-generate" aria-haspopup="true">
                         <span class="icon is-small">
                           <em class="fas fa-plus"></em>
                         </span>
@@ -112,8 +78,50 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <!--                Modals-->
+
+<!--    Modal for the "generate groups"-->
+        <div id="modal-generate" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div class="block has-text-right">
+                        <div class="content has-text-centered">
+                            <h4>Minimum members:</h4>
+                            <label class="block">
+                                <input id="sliderWithValue" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="4" step="1" type="range">
+                                <output class="button is-static is-info" for="sliderWithValue">4</output>
+                            </label>
+                        </div>
+                        <?php
+                            $min = $_POST['min-select'];
+                            $max = $_POST['max-select'];
+                            echo $min . " " . $max;
+                        ?>
+                        <div class="content has-text-centered">
+                            <h4>Maximum members</h4>
+                            <label class="block">
+                                <input id="sliderWithValue1" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="5" step="1" type="range">
+                                <output class="button is-static is-info" for="sliderWithValue1">5</output>
+                            </label>
+                        </div>
+                        <div class="column divider is-full">
+                            <hr class="group-box">
+                        </div>
+                        <button id="generate" class="button is-info" onclick="<?php exec('python ../mainbut.py')?>" >
+                        <span class="icon is-small">
+                          <em class="fas fa-plus"></em>
+                        </span>
+                            <span>Generate</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
         <?php
         $names = "SELECT DISTINCT GroupID FROM groups order by GroupID";
         $result = $conn->query($names);
@@ -191,3 +199,7 @@
 <script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/course-select.js"></script>
+<script src="Assets/min-max.js"></script>
+<script src="Assets/Slider/bulma-slider.min.js"></script>
+<!--Manages the slider output values -->
+<script>bulmaSlider.attach();</script>

@@ -490,6 +490,7 @@ hr {
 
 hr.group-box {
   margin: 0;
+  background: whitesmoke;
 }
 
 img {
@@ -2227,6 +2228,7 @@ fieldset[disabled] .button {
   color: #363636;
   font-weight: 600;
   line-height: 1.125;
+  background: inherit;
 }
 
 .content h1 {
