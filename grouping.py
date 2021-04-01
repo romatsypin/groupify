@@ -13,7 +13,7 @@ def grouping(group, min_memb, max_memb, alpha = 0):
     group_num = 0
     groups_dict = {}
     while student < len(group):
-        key_name = 'Group ' + str(group_num)
+        key_name = str(group_num)
         groups_dict[key_name] = group.iloc[[]]
         if student + 1 != len(group):
             groups_dict[key_name] = groups_dict[key_name].append(group.iloc[[student]])

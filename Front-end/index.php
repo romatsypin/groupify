@@ -47,7 +47,7 @@
                                 echo
                                     '<div class="column is-one-quarter has-text-centered">
                                     <button class="button is-info modal-button" data-target="'.$row["GroupID"].'" aria-haspopup="true">
-                                    '.$row["GroupID"].'
+                                    '."Group ".$row["GroupID"].'
                                     </button>
                                 </div>';
 
@@ -88,30 +88,30 @@
             <div class="modal-content">
                 <div class="box">
                     <div class="block has-text-right">
-                        <div class="content has-text-centered">
-                            <h4>Minimum members:</h4>
-                            <label class="block">
-                                <input id="sliderWithValue" name="minMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="4" step="1" type="range">
-                                <output class="button is-static is-info" for="sliderWithValue">4</output>
-                            </label>
-                        </div>
-                        <div class="content has-text-centered">
-                            <h4>Maximum members</h4>
-                            <label class="block">
-                                <input id="sliderWithValue1" name="maxMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="5" step="1" type="range">
-                                <output class="button is-static is-info" for="sliderWithValue1">5</output>
-                            </label>
-                        </div>
-                        <div class="column divider is-full">
-                            <hr class="group-box">
-                        </div>
                         <form action="" method="post">
-                            <button id="generate" class="button is-info" name="generate">
-                                <span class="icon is-small">
-                                  <em class="fas fa-plus"></em>
-                                </span>
-                                <span>Generate</span>
-                            </button>
+                            <div class="content has-text-centered">
+                                <h4>Minimum members:</h4>
+                                <label class="block">
+                                    <input id="sliderWithValue" name="minMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="4" step="1" type="range">
+                                    <output class="button is-static is-info" for="sliderWithValue">4</output>
+                                </label>
+                            </div>
+                            <div class="content has-text-centered">
+                                <h4>Maximum members</h4>
+                                <label class="block">
+                                    <input id="sliderWithValue1" name="maxMembers" class="slider is-fullwidth is-medium is-circle is-info" min="1" max="8" value="5" step="1" type="range">
+                                    <output class="button is-static is-info" for="sliderWithValue1">5</output>
+                                </label>
+                            </div>
+                            <div class="column divider is-full">
+                                <hr class="group-box">
+                            </div>
+                                <button id="generate" class="button is-info" name="generate">
+                                    <span class="icon is-small">
+                                      <em class="fas fa-plus"></em>
+                                    </span>
+                                    <span>Generate</span>
+                                </button>
                         </form>
                     </div>
                 </div>
@@ -125,7 +125,10 @@
     $max = $_POST['maxMembers'];
 
     if(isset($_POST['generate'])) {
+//        Passes 2 arguments to the command line as well
         exec('python ../mainbut.py '. $min . " ". $max);
+//        Reload the page again after 10 milliseconds, so that it displays the new groups after generating them
+        echo '<script>setTimeout(location.reload.bind(location), 10)</script>';
     }
 ?>
 
@@ -170,12 +173,9 @@
         } else {
         echo "0 results";
         }
-
         $conn->close();
-        
         ?>
-        
-    </div>
+
 </body>
 <script>
 //    Gets the ID of the select menu
@@ -198,10 +198,6 @@
             selectedCourse.selectedIndex = 4;
             break;
     }
-</script>
-<script>
-// min membs
-    let minMemb = document.getElementById("min-select");
 </script>
 <!--Stops the form resubmission-->
 <script>
