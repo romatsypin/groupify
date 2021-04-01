@@ -346,6 +346,10 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+  background-image: url(https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1009&q=80);
+  background-size: cover;
+  background-position: fixed;
+  background-repeat: no-repeat;
 }
 
 h1,
@@ -9521,7 +9525,7 @@ a.has-text-light:focus {
 }
 
 .has-background-light {
-  background-color: whitesmoke !important;
+  background-color: rgba(245, 245, 245, 0.377) !important;
 }
 
 .has-text-dark {
@@ -9534,7 +9538,7 @@ a.has-text-dark:focus {
 }
 
 .has-background-dark {
-  background-color: #363636 !important;
+  background-color: rgba(0, 0, 0, 0.329) !important;
 }
 
 .has-text-primary {
@@ -9560,7 +9564,7 @@ a.has-text-primary-light:focus {
 }
 
 .has-background-primary-light {
-  background-color: #ebfffc !important;
+  background-color: #00000091 !important;
 }
 
 .has-text-primary-dark {

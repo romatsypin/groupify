@@ -10,7 +10,7 @@
     <title>Teachers' page</title>
 </head>
 <body>
-    <div class="container is-max-widescreen mt-4">
+    <div id="contentGroup" class="container is-max-widescreen mt-4">
         <div class="columns has-background-primary-light">
             <div class="column">
 <!--                Classes dropdown menu -->
@@ -32,6 +32,9 @@
                         </select>
                     </div>
                 </div>
+
+                <!-- Minimum member dropdown -->
+                
 
 <!--                MODAL BUTTONS-->
 
@@ -58,7 +61,42 @@
                 $course = $_POST['course-select'];
                 echo $course;
                 ?>
+                
                 <div class="block has-text-right"> 
+                    <div class="dropdown block">
+                                                          
+                                    <div class="select dropdown block">
+                                        <select id="min-select" class="form-control">
+                                            <option value="min1">Minimum members: 1</option>
+                                            <option value="min2">Minimum members: 2</option>
+                                            <option value="min3">Minimum members: 3</option>
+                                            <option value="min4">Minimum members: 4</option>
+                                            <option value="min5">Minimum members: 5</option>
+                                            <option value="min6">Minimum members: 6</option>
+                                            <option value="min7">Minimum members: 7</option>
+                                            <option value="min8">Minimum members: 8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <?php
+                                $min = $_POST['min-select'];
+                                echo $min;
+                                ?>
+                <div class="dropdown block">
+                            
+                                    <div class="select dropdown block">
+                                        <select id="max-select" class="form-control">
+                                            <option value="max1">Maximum members: 1</option>
+                                            <option value="max2">Maximum members: 2</option>
+                                            <option value="max3">Maximum members: 3</option>
+                                            <option value="max4">Maximum members: 4</option>
+                                            <option value="max5">Maximum members: 5</option>
+                                            <option value="max6">Maximum members: 6</option>
+                                            <option value="max7">Maximum members: 7</option>
+                                            <option value="max8">Maximum members: 8</option>
+                                        </select>
+                                    </div>
+                                </div>
                     <button id="generate-groups" class="button is-info" onclick="<?php exec('python ../mainbut.py') ?>">
                         <span class="icon is-small">
                           <em class="fas fa-plus"></em>
@@ -143,6 +181,11 @@
             selectedCourse.selectedIndex = 4;
             break;
     }
+</script>
+<script>
+// min membs
+    let minMemb = document.getElementById("min-select");
+
 </script>
  
 <script src="Assets/modal.js"></script>
