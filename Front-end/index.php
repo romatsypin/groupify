@@ -110,7 +110,7 @@
                         <div class="column divider is-full">
                             <hr class="group-box">
                         </div>
-                        <button id="generate" class="button is-info" onclick="<?php exec('python ../mainbut.py')?>" >
+                        <button id="generate" class="button is-info" onclick="<?php executePython(); ?>" >
                         <span class="icon is-small">
                           <em class="fas fa-plus"></em>
                         </span>
@@ -121,7 +121,14 @@
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
+<!--    PHP function to execute the python script-->
+<?php
+    function executePython() {
+        exec('python ../mainbut.py');
+    }
+?>
 
+<!--    Automatically generated modals-->
         <?php
         $names = "SELECT DISTINCT GroupID FROM groups order by GroupID";
         $result = $conn->query($names);
@@ -131,32 +138,33 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $group = $row["GroupID"];
-            echo '<div id="'.$row['GroupID'].'" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <div class="columns is-multiline">
-                            '?>
-                            <?php
-//                          Query for getting the students' names for each group individually
-                            $test = "SELECT groups.GroupID, groups.StudentID, students.StudentName from groups LEFT JOIN students on groups.StudentID = students.UID WHERE groups.GroupID ='$group'";
-                            $result1 = $conn->query($test);
-//                            Loop for individual students to be put into modals
-                            while($row = $result1->fetch_assoc()) {
-                                echo '
-                                    <div class="column is-full is-size-4">'.
-                                        $row['StudentName'].
-                                    '</div>
-                                    <div class="column divider is-full">
-                                        <hr class="group-box">
-                                    </div>';
-                            }?>
-                        <?php echo'
+            echo '
+            <div id="'.$row['GroupID'].'" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="box">
+                        <div class="columns is-multiline">
+                                '?>
+                                <?php
+    //                          Query for getting the students' names for each group individually
+                                $test = "SELECT groups.GroupID, groups.StudentID, students.StudentName from groups LEFT JOIN students on groups.StudentID = students.UID WHERE groups.GroupID ='$group'";
+                                $result1 = $conn->query($test);
+    //                            Loop for individual students to be put into modals
+                                while($row = $result1->fetch_assoc()) {
+                                    echo '
+                                        <div class="column is-full is-size-4">'.
+                                            $row['StudentName'].
+                                        '</div>
+                                        <div class="column divider is-full">
+                                            <hr class="group-box">
+                                        </div>';
+                                }?>
+                            <?php echo'
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>';
+                <button class="modal-close is-large" aria-label="close"></button>
+            </div>';
         }
         } else {
         echo "0 results";
@@ -193,7 +201,6 @@
 <script>
 // min membs
     let minMemb = document.getElementById("min-select");
-
 </script>
  
 <script src="Assets/modal.js"></script>
