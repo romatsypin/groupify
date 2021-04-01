@@ -110,14 +110,12 @@
                         <div class="column divider is-full">
                             <hr class="group-box">
                         </div>
-                        <form method="post">
                             <button id="generate" class="button is-info" name="generate">
                                 <span class="icon is-small">
                                   <em class="fas fa-plus"></em>
                                 </span>
                                 <span>Generate</span>
                             </button>
-                        </form>
                     </div>
                 </div>
             </div>
