@@ -110,23 +110,25 @@
                         <div class="column divider is-full">
                             <hr class="group-box">
                         </div>
+                        <form action="" method="post">
                             <button id="generate" class="button is-info" name="generate">
                                 <span class="icon is-small">
                                   <em class="fas fa-plus"></em>
                                 </span>
                                 <span>Generate</span>
                             </button>
+                        </form>
                     </div>
                 </div>
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
+
 <!--    PHP function to execute the python script-->
 <?php
     if(isset($_POST['generate'])) {
         exec('python ../mainbut.py');
-    } else {
-        echo 'Not working';}
+    }
 ?>
 
 <!--    Automatically generated modals-->
@@ -203,7 +205,12 @@
 // min membs
     let minMemb = document.getElementById("min-select");
 </script>
- 
+<!--Stops the form resubmission-->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 <script src="Assets/modal.js"></script>
 <script src="Assets/dropdown.js"></script>
 <script src="Assets/course-select.js"></script>
